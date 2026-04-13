@@ -1,0 +1,5 @@
+# PixelJS LLM Guide Pointer
+
+This repository uses `/docs/llm-context/llms-medium.txt` as the canonical rendering-engine guide.
+
+Use that file as the single source of truth for API behavior and performance constraints.
