@@ -24,7 +24,7 @@ export class PixelRenderer {
   private readonly gridNode = new Graphics();
 
   async init(host: HTMLElement): Promise<void> {
-    await this.app.init({ resizeTo: host, antialias: false, useContextAlpha: false });
+    await this.app.init({ resizeTo: host, antialias: false });
     host.appendChild(this.app.canvas);
 
     this.app.stage.addChild(this.root);
@@ -103,8 +103,9 @@ export class PixelRenderer {
 
   renderAssignmentOverlay(assignmentsByShiftId: Map<string, Assignment[]>): void {
     for (const old of this.overlayLayer.removeChildren()) {
-      old.clear();
-      this.badgePool.release(old as Graphics);
+      const node = old as Graphics;
+      node.clear();
+      this.badgePool.release(node);
     }
 
     for (const [shiftId, list] of assignmentsByShiftId.entries()) {
